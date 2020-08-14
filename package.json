@@ -1,0 +1,23 @@
+{
+  "name": "asuha-discord-bot",
+  "version": "1.0.0",
+  "description": "A discord bot created for the discord server: Chigusa's Dream",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChigusaKayano/Asuha_discord_bot.git"
+  },
+  "author": "Florian Lepage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChigusaKayano/Asuha_discord_bot/issues"
+  },
+  "homepage": "https://github.com/ChigusaKayano/Asuha_discord_bot#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "mysql2": "^2.1.0"
+  }
+}
