@@ -1,3 +1,32 @@
 {
-  
+  "commands": {
+    "administration": {
+      "moderationRole": {
+        "messageError": [
+          "You are not Administrator of this server, you can't use this command."
+        ],
+        "set": {
+          "embed": {
+            "titles": [
+              "\uD83D\uDC54 Author:",
+              "\uD83C\uDF93 Role:",
+              "\uD83D\uDCDA Privilege Granted:"
+            ],
+            "value": "AUTHOR just granted the moderation privilege."
+          },
+          "messageError": [
+            "You must specify the role you want to give the moderation privilege. (role `id` or role `@mention`)",
+            "The role you specified id not valid. please retry with a correct one.",
+            "The role you specified already have the moderation privilege."
+          ]
+        },
+        "remove": {
+
+        },
+        "help": {
+
+        }
+      }
+    }
+  }
 }
