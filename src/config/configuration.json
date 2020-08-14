@@ -1,0 +1,84 @@
+{
+  "commands": {
+    "moderation": {
+
+    },
+    "administration": {
+      "RoleOnReact":  "rolereact"
+    },
+    "administration": {
+      "firewall": "firewall",
+      "language": "language"
+    }
+  },
+
+  "client": {
+    "prefix": "?",
+    "developer": {
+      "discordId": "277001462410903552"
+    }
+  },
+
+  "flagURL": {
+    "english": "https://i.imgur.com/pY1PdrC.png",
+    "korean": "https://i.imgur.com/IdtL64f.png",
+    "japanese": "https://i.imgur.com/JL0RRsm.png",
+    "chinese": "https://i.imgur.com/zfSbMAw.png",
+    "french": "https://i.imgur.com/jkusQrf.png",
+    "thai": "https://i.imgur.com/Xyj3vu2.png",
+    "world": "https://i.imgur.com/iWUPo0d.png"
+  },
+
+  "roles": {
+    "restricted": {
+      "name": "\uD83D\uDD12 Restricted",
+      "color": "RED",
+      "position": "1",
+      "mentionable": false,
+      "permissions": [
+
+      ]
+    },
+    "allowed": {
+      "name": "\uD83D\uDD13 Allowed",
+      "color": "GREEN",
+      "position": "1",
+      "mentionable": false,
+      "permissions": [
+        "CONNECT",
+        "USE_EXTERNAL_EMOJIS",
+        "READ_MESSAGE_HISTORY",
+        "ATTACH_FILES",
+        "EMBED_LINKS",
+        "CREATE_INSTANT_INVITE",
+        "ADD_REACTIONS",
+        "STREAM",
+        "CHANGE_NICKNAME"
+      ]
+    },
+    "muted": {
+      "name": "\uD83D\uDD08 Muted",
+      "color": "ORANGE",
+      "position": "2",
+      "mentionable": false,
+      "permissions": [
+
+      ]
+    },
+    "moderator": {
+      "name": "Mods",
+      "color": "BLUE",
+      "position": "4",
+      "mentionable": true,
+      "permissions": [
+        "VIEW_GUILD_INSIGHTS",
+        "CONNECT",
+        "SPEAK",
+        "MUTE_MEMBERS",
+        "CHANGE_NICKNAME",
+        "MANAGE_NICKNAMES",
+        "MANAGE_MESSAGES"
+      ]
+    }
+  }
+}

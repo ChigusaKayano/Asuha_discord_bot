@@ -103,6 +103,11 @@ dist
 # TernJS port file
 .tern-port
 
+# idea files
 .idea/
 
+#node dependencies files
 node_modules/
+
+#project unic token
+src/config/token.json
