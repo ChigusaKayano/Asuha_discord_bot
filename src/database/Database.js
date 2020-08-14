@@ -9,7 +9,6 @@ class Database {
         this.dbServer = token.database.server;
         this.dbPort = token.database.port;
     }
-
     connection() {
         return mysql.createConnection({
             user: this.dbUsername,
@@ -18,6 +17,15 @@ class Database {
             host: this.dbServer,
             port: this.dbPort
         })
+    }
+    checkTablesExistence(client) {
+        let guildId = [];
+        client.guilds.cache.map(guild => guildId.push(guild.id))
+        for(let i = 0; guildId.length > i; i++) {
+            this.connection().query(`CREATE TABLE IF NOT EXISTS moderation_${guildId[i]} (roleId VARCHAR(30))`, (err) => {
+                if(err) throw err;
+            })
+        }
     }
 }
 
