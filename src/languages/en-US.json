@@ -1,0 +1,107 @@
+{
+  "commands": {
+    "administration": {
+      "language": {
+        "languageAvailable": [
+          "English",
+          "Korean",
+          "Japanese",
+          "Chinese",
+          "french",
+          "thai"
+        ],
+        "messageSuccess": [
+          "The bot language has been set to english! Nice to see you again with the language of Shakespeare \uD83D\uDE03"
+        ],
+        "messageError": [
+          "You are not administrator of this discord server. You can't change the bot language.",
+          "You must specify an action. ?language <set> <language>"
+        ]
+      },
+      "firewall": {
+        "setup": {
+          "messageSuccess": [
+            "The Firewall has been successfully setup. Now only peoples with the role ROLE can have access to tour Discord server. People with the role ROLE2 are like banned from your server and are not allowed to see channels."
+          ],
+          "messageError": [
+            "You are not administrator of this discord server. You can't change the firewall state.",
+            "The Firewall is already enable on this Discord server. You can't setup it again."
+          ]
+        },
+        "undo": {
+          "messageSuccess": [
+            ""
+          ],
+          "messageError": [
+            "You are not administrator of this discord server. You can't change the firewall state.",
+            "The Firewall is not enable on this Discord server. You can't undo something that doesn't exist baka."
+          ]
+        }
+      },
+      "roleReaction": {
+        "messageError": [
+          "You are not a moderator, you cant set any role reaction."
+        ],
+        "messageSuccess": [
+          "You've just accepted out rules and guidelines. please do follow them."
+        ],
+        "setup": {
+          "messageError": [
+            "You must specify the role that would be given when reacted.",
+            "The role you specified is no valid. Please try again with a right one.",
+            "You must specify a short description to describe the role to take."
+          ],
+          "messageSuccess": [
+            "React to this message with the reaction that you want people use to get the role."
+          ]
+        },
+        "undo": {
+          "messageError": [
+
+          ],
+          "messageSuccess": [
+
+          ]
+        },
+        "help": {
+          "fieldValue": [
+            "Set a message which when reacted with a special reaction, will give a role.",
+            "will remove the message and peoples with the roles."
+          ]
+        }
+      },
+      "roleStaff": {
+        "add": {
+          "messageError": [
+            "You must specify the role you want to add to the staff list.",
+            "The role you specified is not valid. you have to specified a valid role."
+          ]
+        },
+        "remove": {
+
+        },
+        "messageError": [
+          "You are not administrator of this discord server. you can't use this command."
+        ]
+      }
+    },
+    "moderation": {
+      "clear": {
+        "embedDescription": "The clear is done Master !",
+        "messageError": [
+          "You must enter a number.",
+          "Please enter a valid number. `between 0 & 100`",
+          "You're not a moderator! you can't use that command.."
+        ],
+        "embedFieldTitle": [
+          "Staff Author:",
+          "Message Amount:"
+        ],
+        "embedFieldValue": [
+          "Deleted",
+          "Msg"
+        ]
+      }
+    }
+  }
+}
