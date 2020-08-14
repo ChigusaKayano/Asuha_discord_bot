@@ -9,6 +9,7 @@ class Database {
         this.dbServer = token.database.server;
         this.dbPort = token.database.port;
     }
+
     connection() {
         return mysql.createConnection({
             user: this.dbUsername,
@@ -18,6 +19,7 @@ class Database {
             port: this.dbPort
         })
     }
+}
 
 module.exports = {
     Database
