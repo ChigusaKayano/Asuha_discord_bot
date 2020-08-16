@@ -91,7 +91,48 @@ class Clear {
         }
     }
 }
+class ClearReact {
+    constructor(reaction, user, config, client, token) {
+        this.reaction = reaction;
+        this.user = user;
+        this.prefix = config.client.prefix;
+        this.token = token;
+        this.client = client;
+        this.commands = "clear";
+    }
+    thumbnailUrlToId(thumbnailUrl) {
+        let id = ""
+        for(let i = 35; i <= 52; i++) {
+            id += thumbnailUrl.charAt(i)
+        } return id;
+    }
+    react() {
+        let db = new Database(this.token);
+        let time = `${new Date(Date.now()).getHours()}:${new Date(Date.now()).getMinutes()}:${new Date(Date.now()).getSeconds()}`
+        if(this.user.id !== this.client.user.id) {
+            db.connection().query(`SELECT id FROM msgId_${this.reaction.message.guild.id} WHERE type = 'clear'`, (err, rows) => {
+                if (err) throw err;
+                let msgId = rows[0].id;
+                if (this.reaction.message.id === msgId && this.reaction.users.cache.some(user => user.id === this.thumbnailUrlToId(this.reaction.message.embeds[0].thumbnail.url))) {
+                    this.reaction.message.delete().then(message => {
+                        console.log(`[${time}] '@${this.user.tag}' had deleted the clear message embed in the channel '#${this.reaction.message.channel.name}'.`)
+                    }).catch(console.error);
+                } else {
+                    let UserReactions = this.reaction.message.reactions.cache.filter(reaction => reaction.users.cache.has(this.user.id));
+                    try {
+                        for (const reaction of UserReactions.values()) {
+                            reaction.users.remove(this.user.id);
+                        }
+                    } catch (error) {
+                        console.error('Failed to remove reactions.');
+                    }
+                }
+            });
+        }
+    }
+}
 
 module.exports = {
-    Clear
+    Clear,
+    ClearReact
 }
