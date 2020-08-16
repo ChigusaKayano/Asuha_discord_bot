@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ChigusaKayano/Asuha_discord_bot#readme",
   "dependencies": {
     "discord.js": "^12.2.0",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "node-fetch": "^2.6.0"
   }
 }
