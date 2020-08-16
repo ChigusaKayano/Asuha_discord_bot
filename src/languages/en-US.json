@@ -21,10 +21,27 @@
           ]
         },
         "remove": {
-
+          "embed": {
+            "titles": [
+              "\uD83D\uDC54 Author:",
+              "\uD83C\uDF93 Role:",
+              "\uD83D\uDCDA Privilege Removed:"
+            ],
+            "value": "AUTHOR just removed the moderation privilege."
+          },
+          "messageError": [
+            "You must specify the role you want to remove the moderation privilege. (role `id` or role `@mention`)",
+            "The role you specified id not valid. please retry with a correct one.",
+            "The role you specified do not have the moderation privilege."
+          ]
         },
         "help": {
-
+          "embed": {
+            "value": [
+              "- Allows you to add moderation permissions to the specified role.",
+              "- Useful to revoke the moderation permissions to the specified role."
+            ]
+          }
         }
       }
     }
