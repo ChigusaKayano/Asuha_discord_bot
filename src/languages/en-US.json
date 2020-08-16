@@ -44,6 +44,26 @@
           }
         }
       }
+    },
+    "moderation": {
+      "clear": {
+        "messageError": [
+          "There is no role which have the moderation privilege. Please use the command role set.",
+          "You are not moderators, you can't use this commands.",
+          "You must specify the number of messages to delete.",
+          "The number of messages to delete must be in the range of 1 < 100"
+        ],
+        "embed": {
+          "description": "The clear is done master!",
+          "title": [
+            "Clear Author:",
+            "Amount:"
+          ],
+          "value": [
+            "Deleted"
+          ]
+        }
+      }
     }
   }
 }

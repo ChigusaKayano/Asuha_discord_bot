@@ -12,15 +12,17 @@ const token = JSON.parse(fs.readFileSync("./config/token.json"));
 const {Database} = require("./database/Database.js");
 //Administration related imports
 const {ModerationRole} = require("./action/administration/ModerationRole.js");
+//Moderation related imports
+const {Clear} = require("./action/moderation/Clear.js");
 //event listener
 client.on("ready", () => {
     let time = `${new Date(Date.now()).getHours()}:${new Date(Date.now()).getMinutes()}:${new Date(Date.now()).getSeconds()}`
     console.log(`[${time}] The client '${client.user.username}' has been connected.`)
-
-    new Database(token).checkTablesExistence(client);
+    //new Database(token).checkTablesExistence(client);
 });
 client.on("message", (message) => {
     new ModerationRole(message, config, client, token).redirect();
+    new Clear(message, config, client, token).command();
 })
 
 
