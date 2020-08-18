@@ -14,7 +14,6 @@ const {Database} = require("./database/Database.js");
 const {ModerationRole} = require("./action/administration/ModerationRole.js");
 //Moderation related imports
 const {Clear, ClearReact} = require("./action/moderation/Clear.js");
-const {Mute} = require("./action/moderation/Mute.js");
 //event listener
 client.on("ready", () => {
     let time = `${new Date(Date.now()).getHours()}:${new Date(Date.now()).getMinutes()}:${new Date(Date.now()).getSeconds()}`
@@ -24,7 +23,6 @@ client.on("ready", () => {
 client.on("message", (message) => {
     new ModerationRole(message, config, client, token).redirect();
     new Clear(message, config, client, token).command();
-    new Mute(message, config, client, token).redirect();
 })
 client.on("messageReactionAdd", (MessageReaction, User) => {
     new ClearReact(MessageReaction, User, config, client, token).react();
