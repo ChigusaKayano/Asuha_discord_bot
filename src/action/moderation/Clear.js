@@ -38,7 +38,7 @@ class Clear {
                                         let gifUrl = `https://media.giphy.com/media/${content.data[0].id}/giphy.gif`;
                                         let info = [gifUrl, args[1]]
                                         this.message.channel.send(this.embed(1, language, info)).then(message => {
-                                            message.react("🗑️");
+                                            message.react("🗑️").then().catch(console.error);
                                             console.log(`[${time}] '@${this.message.author.tag}' deleted '${args[1]}' messages in the channel '#${this.message.channel.name}'.`)
                                             db.connection().query(`SELECT id FROM msgId_${this.message.guild.id} WHERE type = 'clear'`, (err, rows) => {
                                                 if(err) throw err;
