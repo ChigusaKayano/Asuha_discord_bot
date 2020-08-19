@@ -172,7 +172,7 @@ class Mute {
                                     if(userId.length === 18) {
                                         if(userId !== this.message.author.id) {
                                             if(!this.message.guild.member(userId).roles.cache.some(role => role.id === rows[0].value)) {
-                                                if( 0 < args[2] < 360) {
+                                                if( 5 < args[2] < 360) {
                                                     if (typeof args[3] !== "undefined") {
                                                         let reason = ""; //init of the variable which will contain the reason
                                                         for (let i = 3; args.length > i; i++) {
@@ -224,7 +224,7 @@ class Mute {
                                                                         console.log(`[${time}] The mute duration time has expired. '${this.message.guild.member(userId).user.tag}' has been un muted.}`);
                                                                     });
                                                                 });
-                                                            }, args[2] * 6000);
+                                                            }, args[2] * 60000);
                                                         } else { // return a message error when the reason is containing "
                                                             this.message.delete().then().catch();
                                                             this.message.channel.send(language.messageError[8].replace("LETTER", '"')).then(message => message.delete({timeout: 10000})).catch(console.error);
