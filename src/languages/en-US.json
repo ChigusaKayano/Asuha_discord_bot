@@ -91,7 +91,33 @@
           }
         },
         "tempmute": {
-
+          "noteMessage": [
+            "Note: You can set a specific channel where restriction message will be send. \nTo do so use the command `PREFIXchannel set restriction`",
+            "Note: The role ROLE has been created. You can now personalise it to you own preference."
+          ],
+          "messageError": [
+            "You do not have the moderator privilege. You can't use that command.",
+            "There is no role muted on the server.",
+            "You must specified a user to mute.",
+            "The user you specified is not valid. Please retry with a correct one.",
+            "You can't mute yourself dickhead.",
+            "The user you specified is already muted. you can't mute him again...",
+            "The mute duration cannot exceed 360 and be below 5. Please retry.",
+            "You must specify a reason to mute someone.",
+            "The reason cannot contain the letter ` LETTER `. Please retry without it!"
+          ],
+          "embed": {
+            "description": "There is no role Muted on this Discord server. To create one, please react to this message.",
+            "title": [
+              "Staff Author:",
+              "Muted User:",
+              "Mute Duration:",
+              "Mute Reason:"
+            ],
+            "value": [
+              "Minutes"
+            ]
+          }
         },
         "unmute": {
 
