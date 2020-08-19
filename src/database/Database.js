@@ -24,7 +24,10 @@ class Database {
         for(let i = 0; guildId.length > i; i++) {
             this.connection().query(`CREATE TABLE IF NOT EXISTS moderation_${guildId[i]} (roleId VARCHAR(30))`, (err) => {
                 if(err) throw err;
-            })
+            });
+            this.connection().query(`CREATE TABLE IF NOT EXISTS mute_${guildId[i]} (userId VARCHAR(30), authorId VARCHAR(30), reason VARCHAR(255), muteFor VARCHAR(255))`, (err) => {
+                if(err) throw err;
+            });
         }
     }
 }
