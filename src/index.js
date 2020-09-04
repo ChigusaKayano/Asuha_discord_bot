@@ -19,12 +19,13 @@ const {Mute, MuteReact} = require("./action/moderation/Mute.js");
 client.on("ready", () => {
     let time = `${new Date(Date.now()).getHours()}:${new Date(Date.now()).getMinutes()}:${new Date(Date.now()).getSeconds()}`
     console.log(`[${time}] The client '${client.user.username}' has been connected.`)
-    //new Database(token).checkTablesExistence(client);
+    new Database(token).checkTablesExistence(client);
 });
 client.on("message", (message) => {
     new ModerationRole(message, config, client, token).redirect();
     new Clear(message, config, client, token).command();
     new Mute(message, config, client, token).redirect();
+
 })
 client.on("messageReactionAdd", (MessageReaction, User) => {
     new ClearReact(MessageReaction, User, config, client, token).react();

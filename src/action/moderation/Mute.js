@@ -16,6 +16,9 @@ class Mute {
         let args = this.message.content.slice().split(/ /); // init the var which contain the message/command args
         if(this.message.author.id !== this.client.user.id) {
             switch (args[0].toLowerCase()) {
+                case this.prefix + "channel":
+                    this.channel();
+                    break;
                 case this.prefix + "mute":
                     if(args[1].toLowerCase() === "help") {
                         this.help();
@@ -31,6 +34,59 @@ class Mute {
                     break;
             }
         }
+    }
+    channel() {
+        let args = this.message.content.slice().split(/ /); // init the var which contain the message/command args
+        let time = `${new Date(Date.now()).getHours()}:${new Date(Date.now()).getMinutes()}:${new Date(Date.now()).getSeconds()}`
+        let db = new Database(this.token);
+        if(typeof args[1] === "undefined") return this.message.channel.send(language.messageError[0]).then().catch(console.error);
+            db.connection().query(`SELECT roleId FROM moderation_${this.message.guild.id}`, (err, rows) => {
+                if (err) throw err;
+                let Role = rows;
+                db.connection().query(`SELECT value FROM setting_${this.message.guild.id} WHERE type = 'language'`, (err, rows) => {
+                    if (err) throw err;
+                    let language = JSON.parse(fs.readFileSync(`./languages/${rows[0].value}.json`)).commands.moderation.mute.channel;
+                    if (Role.length >= 1) {
+                        let answer = false;
+                        for (let i = 0; Role.length > i; i++) {
+                            if (this.message.guild.member(this.message.author.id).roles.cache.some(role => role.id === Role[i].roleId)) {
+                                answer = true;
+                            }
+                        }
+                        if (answer) {z
+                            if(args[1] === this.commands) {
+                                if (args[2] === "set") {
+                                    db.connection().query(`SELECT * FROM setting_${this.message.guild.id} WHERE type = "restriction"`, (err, rows) => {
+                                        if (err) throw err;
+                                        if (rows.length < 1) {
+                                            db.connection().query(`INSERT INTO setting_${this.message.guild.id} (type, value) VALUES ("restriction", ${this.message.channel.id})`, (err) => {
+                                                if(err) throw err;
+                                            });
+                                            this.message.channel.send(language.messageSuccess[0]).then(message => message.delete({timeout: 15000})).catch(console.error);
+                                        } else {
+                                            this.message.channel.send(language.messageError[1]).then(message => message.delete({timeout: 10000})).catch(console.error)
+                                        }
+                                        this.message.delete().then().catch(console.error);
+                                    });
+                                } else if (args[2] === "remove") {
+                                    db.connection().query(`SELECT * FROM setting_${this.message.guild.id} WHERE type = "restriction"`, (err, rows) => {
+                                        if(err) throw err;
+                                        if(rows.length < 1) {
+                                            this.message.channel.send(language.messageError[2]).then(message => message.delete({timeout: 10000})).catch(console.error);
+                                        } else {
+                                            db.connection().query(`DELETE FROM setting_${this.message.guild.id} WHERE type = "restriction"`, (err) => {
+                                                if(err) throw err;
+                                            });
+                                            this.message.channel.send(language.messageSuccess[1]).then(message => message.delete({timeout: 15000})).catch(console.error);
+                                        }
+                                        this.message.delete().then().catch(console.error);
+                                    })
+                                }
+                            }
+                        }
+                    }
+                });
+            });
     }
     mute() {
         let args = this.message.content.slice().split(/ /); // init the var which contain the message/command args
@@ -83,7 +139,7 @@ class Mute {
                                                                 let gifUrl = `https://media.giphy.com/media/${content.data[0].id}/giphy.gif`;
                                                                 info.push(gifUrl);
                                                                 if (rows.length >= 1) {
-                                                                    let channel = this.message.guild.channels.find(channel => channel.id === rows[0].id);
+                                                                    let channel = this.message.guild.channels.cache.find(channel => channel.id === rows[0].value);
                                                                     channel.send(this.embed(1, info, language)).then().catch(console.error);
                                                                 } else {
                                                                     this.message.channel.send(this.embed(1, info, language)).then(message => {

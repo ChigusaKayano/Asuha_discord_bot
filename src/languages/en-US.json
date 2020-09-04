@@ -152,6 +152,16 @@
             "- Usable to unmute someone that have been mute previously.",
             "- Lost in the bot commands ? this will help you ^^"
           ]
+        },
+        "channel": {
+          "messageError": [
+            "You must specify an action.",
+            "There is already a channel set on this server. please remove it."
+          ],
+          "messageSuccess": [
+            "The restriction channel has been successfully set.",
+            "The restriction channel has been successfully removed."
+          ]
         }
       }
     }
